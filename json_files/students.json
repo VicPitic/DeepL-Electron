@@ -4,7 +4,11 @@
     "gender": "Female",
     "department": "History",
     "cars": {
-        "car1": "honda",
-        "car2": "vk"
+        "car1": "car honda",
+        "car2": "car vk",
+        "hondas": {
+            "honda1": "car honda1",
+            "honda2": "car honda2"
+        }
     }
 }
