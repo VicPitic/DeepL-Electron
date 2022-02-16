@@ -1,0 +1,10 @@
+{
+    "name": "Sara",
+    "age": 23,
+    "gender": "Female",
+    "department": "History",
+    "cars": {
+        "car1": "honda",
+        "car2": "vk"
+    }
+}
