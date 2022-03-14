@@ -13,7 +13,6 @@
 
 
   <div class="frame">
-
     <center>
       <h2 id="title" style="font-size: auto;">Hello</h2>
     </center>
@@ -23,23 +22,48 @@
       <div class="title">
         <h1>Set up the settigns</h1>
       </div>
-        
-      <input type="text" placeholder="Api Key"/>
-      <input type="text" placeholder="Input Language"/>
-      <input type="text" placeholder="Output Language"/>
-    
-      
 
-      <button type="button" class="btn" name="uploadbutton">Update setting</button>
+      <form id="settings-form">
 
+        <input type="text" name="api-key" placeholder="Api Key" id="api-key" />
+        <br>
+        <br>
+        <!--<input type="text" name="input-lan" placeholder="Input Language" id="input-lan" /> -->
+
+        <label for="cars">Choose Input Language</label>
+
+        <select name="input-lan" id="cars">
+          <option value="ES">Spanish</option>
+          <option value="FR">French</option>
+          <option value="DE">German</option>
+          <option value="AR">Arabic</option>
+        </select>
+
+        <br>
+        <br>
+        <!-- <input type="text" name="output-lan" placeholder="Output Language" id="output-lan" /> -->
+
+        <label for="cars">Choose Output Language</label>
+
+        <select name="output-lan" id="cars">
+          <option value="ES">Spanish</option>
+          <option value="FR">French</option>
+          <option value="DE">German</option>
+          <option value="AR">Arabic</option>
+        </select>
+
+        <br><br>
+
+        <button type="submit" class="btn" name="uploadbutton">Update setting</button>
+      </form>
     </div>
   </div>
 
-  <button class="open-button" onclick="openForm()"><i style="font-size: 15px;" class="fa fa-home"></i></button>
-  <button style="margin-bottom: 70px;" class="open-button" id="info-button"> <a style="text-decoration: none;" href="about.html"> <i style="font-size: 15px;"
-      class="fa fa-info"></i> </a></button>
-  <button style="margin-bottom: 140px;" class="open-button"> <a href="settings.html"> <i style="font-size: 15px;"
-      class="fa fa-gear fa-spin"></i> </a></button>
+  <a href="index.html"><button class="open-button"><i style="font-size: 15px;" class="fa fa-home"></i></button></a>
+  <a style="text-decoration: none;" href="about.html"></a><button style="margin-bottom: 70px;" class="open-button"
+    id="info-button"> <i style="font-size: 15px;" class="fa fa-info"></i> </button></a>
+  <a href="settings.html"><button style="margin-bottom: 140px;" class="open-button"> <i style="font-size: 15px;"
+        class="fa fa-gear fa-spin"></i> </button></a>
 
 
   <div class="chat-popup" id="myForm">
@@ -55,6 +79,8 @@
   </div>
 
   <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+  <script src="credentials/settings.js"></script>
 
   <script>
 
@@ -219,9 +245,9 @@
         .pauseFor(2500)
         .deleteChars(8)
         .start();
+
     }
 
-    ekUpload();
 
 
 

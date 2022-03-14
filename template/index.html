@@ -26,19 +26,21 @@
 
       <div class="dropzone">
         <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-        <input type="file" class="upload-input" />
+        <input id="file-button" type="file" class="upload-input" />
       </div>
+
+      <center><p id="filename-text"></p></center>
 
       <button type="button" class="btn" name="uploadbutton">Upload file</button>
 
     </div>
   </div>
 
-  <button class="open-button" onclick="openForm()"><i style="font-size: 15px;" class="fa fa-home"></i></button>
-  <button style="margin-bottom: 70px;" class="open-button" id="info-button"> <a style="text-decoration: none;" href="about.html"> <i style="font-size: 15px;"
-      class="fa fa-info"></i> </a></button>
+  <a href="index.html"><button class="open-button"><i style="font-size: 15px;" class="fa fa-home"></i></button></a>
+  <button style="margin-bottom: 70px;" class="open-button" id="info-button"> <a style="text-decoration: none;"
+      href="about.html"> <i style="font-size: 15px;" class="fa fa-info"></i> </a></button>
   <button style="margin-bottom: 140px;" class="open-button"> <a href="settings.html"> <i style="font-size: 15px;"
-      class="fa fa-gear fa-spin"></i> </a></button>
+        class="fa fa-gear fa-spin"></i> </a></button>
 
 
   <div class="chat-popup" id="myForm">
@@ -54,6 +56,60 @@
   </div>
 
   <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+		https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script src="https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js"></script>
+
+  <!--Firebase Coding-->
+
+  <script>
+
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCvkRNaXsCoDDoZ8jfJAvV1Wofqn-B7b6U",
+      authDomain: "job-board-database.firebaseapp.com",
+      projectId: "job-board-database",
+      storageBucket: "job-board-database.appspot.com",
+      messagingSenderId: "97894020421",
+      appId: "1:97894020421:web:bf82170b67900b2104fa2c",
+      measurementId: "G-XLNNESECJ3"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    firebase.analytics();
+
+
+    const database = firebase.database();
+
+    const fileButton = document.getElementById("file-button");
+
+
+    fileButton.addEventListener("change", (e) => {
+      var file = e.target.files[0];
+
+      var storageRef = firebase.storage().ref("json_files_input/" + file.name);
+      storageRef.put(file).then(() => {
+        var filenameText = document.getElementById("filename-text");
+        
+        filenameText.innerText = file.name;
+
+
+        window.location.href = `result.html?file=${file.name}`;
+
+      });
+
+    });
+
+
+  </script>
 
   <script>
 
