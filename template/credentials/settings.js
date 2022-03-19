@@ -25,6 +25,23 @@ document.getElementById("settings-form").addEventListener("submit", function (ev
     var inputLan = event.target["input-lan"].value;
     var outputLan = event.target["output-lan"].value;
 
+    var all = document.getElementsByName("output-lan");
+
+    settingsData["api_key"] = apiKeyInput;
+    settingsData["input_lan"] = inputLan;
+
+    let languages = "";
+
+    for (var i = 0, max = all.length; i < max; i++) {
+        if (all[i].checked) {
+            languages += all[i].value + " ";
+        }
+    }
+
+    var lans = languages.split(" ");
+    console.log(lans);
+
+    settingsData["output_lan"] = languages;
 
     translate({
         free_api: true,
@@ -36,9 +53,8 @@ document.getElementById("settings-form").addEventListener("submit", function (ev
             if (err) throw err;
         });
 
-        settingsData["api_key"] = apiKeyInput;
-        settingsData["input_lan"] = inputLan;
-        settingsData["output_lan"] = outputLan;
+
+
         alert("Succesfully Updated!");
     }).catch(error => {
         alert("Invalid API Key!");

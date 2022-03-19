@@ -15,8 +15,10 @@ app.on("ready", () => {
         webPreferences: {
             nodeIntegration: true,
             contextIsolation: false
-        }
-
+        },
+        width: 1500,
+        height: 1000,
+        resizable: false
     });
 
     //load html
